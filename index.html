@@ -1,23 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Quote Generator</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aesthetic Quote Generator</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background: linear-gradient(135deg,#1e1e2f,#3a3a5f,#6d5dfc);
+      overflow:hidden;
+    }
+
+    .container{
+      width:90%;
+      max-width:500px;
+      padding:40px;
+      border-radius:25px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(15px);
+      border:1px solid rgba(255,255,255,0.2);
+      text-align:center;
+      color:white;
+      box-shadow:0 8px 32px rgba(0,0,0,0.3);
+      animation: fadeIn 1s ease;
+    }
+
+    h1{
+      margin-bottom:25px;
+      font-size:2rem;
+      letter-spacing:1px;
+    }
+
+    #quote{
+      font-size:1.3rem;
+      line-height:1.8;
+      margin-bottom:30px;
+      min-height:120px;
+      transition:0.3s;
+    }
+
+    button{
+      padding:14px 28px;
+      border:none;
+      border-radius:50px;
+      background:white;
+      color:#5b4bff;
+      font-size:1rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    button:hover{
+      transform:scale(1.08);
+      background:#ece9ff;
+    }
+
+    .glow{
+      position:absolute;
+      width:300px;
+      height:300px;
+      background:#8f7bff;
+      border-radius:50%;
+      filter:blur(120px);
+      opacity:0.4;
+      z-index:-1;
+    }
+
+    .glow:nth-child(1){
+      top:-100px;
+      left:-100px;
+    }
+
+    .glow:nth-child(2){
+      bottom:-100px;
+      right:-100px;
+      background:#ff7eb3;
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(20px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>Random Quote Generator</h1>
+  <div class="glow"></div>
+  <div class="glow"></div>
 
-        <p id="quote">Click the button to get a quote!</p>
+  <div class="container">
+    <h1>✨ Quote Generator</h1>
 
-        <button onclick="generateQuote()">
-            New Quote
-        </button>
-    </div>
+    <p id="quote">
+      Click below to get inspired.
+    </p>
 
-    <script src="script.js"></script>
+    <button onclick="generateQuote()">
+      New Quote
+    </button>
+  </div>
+
+  <script>
+    const quotes = [
+      "Dream big. Start small. Stay consistent.",
+      "Discipline creates the lifestyle motivation promises.",
+      "Your future is built by what you do today.",
+      "Small progress is still progress.",
+      "Confidence comes from keeping promises to yourself.",
+      "Focus on growth, not perfection.",
+      "Be proud of how far you’ve come.",
+      "Consistency beats talent when talent quits."
+    ];
+
+    function generateQuote() {
+
+      const randomIndex =
+        Math.floor(Math.random() * quotes.length);
+
+      document.getElementById("quote").innerText =
+        quotes[randomIndex];
+    }
+  </script>
+
 </body>
 </html>
